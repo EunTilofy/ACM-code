@@ -32,10 +32,18 @@ inline int read()
     return x*f;
 }
 const int MN = 3e5 + 5;
-int a[MN], b[MN], c[MN], n, m;
+ld p[105];
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
-    // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
+    std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
+    ld ans = 0;
+    int n;
+    cin>>n;
+    REP(i, 0, n) cin>>p[i];
+    REP(i, 0, n) REP(j, 0, n) if(i != j){
+        ans += p[i] * p[j]/ (p[i] + p[j]);
+    }
+    printf("%.12lf\n", ans);
     return 0;
 }
