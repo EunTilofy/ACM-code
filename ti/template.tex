@@ -1,0 +1,137 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{bibliography item}[text]
+\mode<presentation> {
+% The Beamer class comes with a number of default slide themes which change the colors and layouts of slides. Below this is a list of all the themes, uncomment each in turn to see what they look like.
+%
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+%\usepackage{bookman} % the used font
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[] %optional
+{浙江工业大学第十九届“杭银理财杯”大学生程序设计竞赛暨全国邀请赛}
+
+\subtitle{题目分析}
+\author[奥斯卡和她的小伙伴们]
+{奥斯卡和她的小伙伴们}
+\date[2022年3月20日] % (optional)
+{2022年3月20日}
+
+%\logo{\includegraphics[height=0.5cm]{logo.png}}
+
+%----------------------------------------------------------------------------------------
+%	Highlight the title of the current section
+%----------------------------------------------------------------------------------------
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	All pages in the slides
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% insert title page---------------------------
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{A. Grammy Wants to Earn Big Money}
+\framesubtitle{题目大意}
+dgg会在周一到周五每天在杭州银行存一块钱，在周末学习理财知识。今天是周日，问包括今天的接下来$n\ (n\leq 30\,000)$天dgg会存下来多少钱。
+
+\end{frame}
+
+\begin{frame}
+\frametitle{A. Grammy Wants to Earn Big Money}
+\framesubtitle{题解}
+
+直接模拟复杂度是$\Theta(n)$，按照$\bmod 7$直接计算复杂度是$\Theta(1)$。
+
+\end{frame}
+
+% Insert a thank your frame ------------------------------------------------
+\begin{frame}
+\Huge{\centerline{谢谢！}}
+\end{frame}
+\end{document}
