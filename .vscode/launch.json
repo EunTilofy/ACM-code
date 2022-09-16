@@ -11,22 +11,14 @@
     },
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
+      "type": "lldb",
       "request": "launch",
       "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "d:/2022-s/ACM/2022-fall/Codeforces/Codeforces Round #820 (Div. 3)",
-      "program": "d:/2022-s/ACM/2022-fall/Codeforces/Codeforces Round #820 (Div. 3)/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      // "stopAtEntry": true,
+      // "externalConsole": false,
+      "cwd": "/Users/pac/Documents/2022-f/ACM/.vscode",
+      "program": "/Users/pac/Documents/2022-f/ACM/.vscode/build/Debug/outDebug",
+      // "MIMode": "gdb" s
     }
   ]
 }
