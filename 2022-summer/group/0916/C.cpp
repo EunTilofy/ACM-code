@@ -19,58 +19,62 @@ typedef pair<int,int> pii;
 #define se second
 #define mod 998244353
 inline int qpow(int x,ll y,int m=mod){int r=1;for(;y;y>>=1,x=(ll)x*x%m)if(y&1)r=(ll)r*x%m;return r;}
-inline void read(int &x)
+inline int read()
 {
-    x = 0; int f=1;char ch=getchar();
+    int x=0,f=1;char ch=getchar();
     while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}
     while(ch>='0'&&ch<='9'){x=(x<<3)+(x<<1)+ch-'0';ch=getchar();}
-   	x*=f;
+    return x*f;
 }
 
 const int N = 1e5 + 10;
 vector<int> g[N];
-double b[N], ans = 0.0;
+int f[N][2], q[N];
+
+int mul(int x, int y) {
+	return 1ll * x * y % mod;
+}
+void Mul(int &x, int y) {
+	x = mul(x, y);
+}
+int add(int x, int y) {
+	return ((x + y) % mod + mod) % mod;
+}
+void Add(int &x, int y) {
+	x = add(x, y);
+}
 
 void dfs(int x, int fa) {
+	f[x][0] = f[x][1] = 1;
+	q[x] = 1;
 	for(auto y : g[x]) {
 		if(y == fa) continue;
-		if(fa) ans = max(ans, fabs(b[x] + b[fa] + b[y]) / 3.0);
 		dfs(y, x);
+		Mul(f[x][0], add(f[y][0], f[y][1]));
+		Mul(f[x][1], add(q[y], add(f[y][0], f[y][1])));
+		Mul(q[x], f[y][0]);
+	}
+	Add(f[x][1], -q[x]);
+}
+void solve() {
+	int n = read();
+	for(int i = 1, x, y; i < n; ++i) {
+		x = read(), y = read();
+		g[x].push_back(y);
+		g[y].push_back(x);
+	}
+	dfs(1, 0);
+	printf("%d\n", add(f[1][0], f[1][1]));
+	for(int i = 1; i <= n; ++i) {
+		f[i][0] = f[i][1] = 0;
+		g[i].clear();
 	}
 }
 
-vector<double> qx;
 int main() {
-	int n; read(n);
-	for(int i = 1; i <= n; ++i) scanf("%lf", &b[i]);
-	ans = 0.0;
-	for(int i = 1, x, y; i < n; ++i) {
-		read(x), read(y);
-		g[x].push_back(y), g[y].push_back(x);
-		ans = max(ans, fabs(b[x] + b[y]) / 2.0);
+	int T = read();
+	for(int o = 1; o <= T; ++o) {
+		solve();
 	}
-	dfs(1, 0);
-	for(int u = 1; u <= n; ++u) {
-		qx.clear();
-		for(auto v : g[u]) qx.push_back(b[v]);
-		sort(qx.begin(), qx.end());
-		if(qx.size() >= 2) {
-			printf("%d\n", qx.size());
-			double pos = b[u];
-			for(int i = 0; i < 2; ++i) pos += qx[i];
-			ans = max(ans, fabs(pos) / 3.0);
-			puts("???");
-			pos = b[u];
-			printf("%d\n", qx.size() - 1);
-			int sz=qx.size();
-			for(int i = sz- 1; i >= (sz - 2); --i) { 
-//				printf("i = %d %d\n", i, qx.size() - 2);
-				pos += qx[i];
-			}
-			ans = max(ans, fabs(pos) / 3.0);
-			puts("????");
-		}
-	}
-	printf("%.12f\n", ans * ans / 4.0);
 	return 0;
 }
