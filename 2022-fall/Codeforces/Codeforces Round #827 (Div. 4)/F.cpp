@@ -40,28 +40,28 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        int mins = 1, maxt = 1;
-        int nms = 1, nmt = 1;
-        int lens = 1, lent = 1;
+        long long mins = 1, maxt = 1;
+        long long nms = 1, nmt = 1;
+        long long lens = 1, lent = 1;
         while(n --) {
             int opt = read();
             m = read();
             string s;
             std::cin>>s;
             if(opt == 1) {
-                lens += m * s.size();
+                lens += 1ll * m * s.size();
                 int _ = 0;
                 for(auto x : s) _ += x == 'a';
-                nms += _ * m;
+                nms += 1ll * _ * m;
             }
             else {
                 int _ = 0;
                 for(auto x : s) {
                     _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1);
+                    maxt = max(maxt, x - 'a' + 1ll);
                 }
-                nmt += _ * m;
-                lent += m * s.size();
+                nmt += 1ll * _ * m;
+                lent += 1ll * m * s.size();
             }
             if(mins != maxt) puts("YES");
             else {
