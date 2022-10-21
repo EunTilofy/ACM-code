@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #define ll long long
-//#define int long long
+#define int long long
 #define db double
 #define ld long double
 #define dbg1(x) cerr<<#x<<"="<<(x)<<" "
@@ -33,42 +33,36 @@ inline int read()
 }
 const int MN = 3e5 + 5;
 int a[MN], b[MN], c[MN], n, m;
+char s[MN];
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
+        n = read(); m = read();
+        REP(i, 1, n + 1) a[i] = read();
+        __int128 ans = 0;
+        if(m <= n) {
+            int l = 1, r = 0;
+            __int128 tmp = 0;
+            REP(l, 1, n + 1) {
+                while(r - l + 1 < m && r < n) tmp += a[++r];
+                if(r - l + 1 == m) ans = max(ans, tmp);
+                tmp -= a[l];
             }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+            ans += (1ll * m * (m - 1) / 2);
         }
+        else {
+            REP(i, 1, n + 1) ans = ans + a[i];
+            // dbg2(ans);
+            ans += 1ll * m * n;
+            // dbg2(ans);
+            ans -= (1ll * n * (n + 1) / 2);
+            // dbg2(ans);
+        }
+        long long prt = (long long)ans;
+        printf("%lld\n", prt);
     }
     return 0;
 }

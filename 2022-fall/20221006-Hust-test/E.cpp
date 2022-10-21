@@ -31,44 +31,19 @@ inline int read()
     while(ch>='0'&&ch<='9'){x=(x<<3)+(x<<1)+ch-'0';ch=getchar();}
     return x*f;
 }
-const int MN = 3e5 + 5;
+const int MN = 1e6 + 5;
 int a[MN], b[MN], c[MN], n, m;
+char s[MN];
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
-    int T = read();
-    while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+    n = read();
+    scanf("%s", s + 1);
+    int ans = 0;
+    REP(i, 1, n - 1) {
+        if(s[i] == 'f' && s[i + 1] == 'y' && s[i + 2] == 't') ++ans;
     }
+    printf("%d\n", ans);
     return 0;
 }

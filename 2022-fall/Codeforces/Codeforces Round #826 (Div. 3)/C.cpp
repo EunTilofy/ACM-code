@@ -40,35 +40,28 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+        int sm = 0;
+        REP(i, 1, n + 1) {
+            a[i] = read();
+            sm += a[i];
         }
+        std::vector<int> fac;
+        for(int i = 1; i * i <= sm; ++i) if(sm % i == 0) fac.push_back(i), fac.pb(sm/i);
+        std::sort(fac.begin(), fac.end());
+        int ans = n;
+        for(auto x : fac) {
+            int mx = 0, fl = 1;
+            REP(i, 1, n + 1) {
+                int ssm = 0;
+                int j = i;
+                while(ssm < x && j <= n) ssm += a[j], ++j;
+                // dbg1(ssm); dbg1(x); dbg1(i); dbg2(j); 
+                if(ssm == x) mx = max(mx, j - i), i = j - 1;
+                else {fl = 0; break;}
+            }
+            if(fl) ans = min(ans, mx);
+        }
+        printf("%d\n", ans);
     }
     return 0;
 }

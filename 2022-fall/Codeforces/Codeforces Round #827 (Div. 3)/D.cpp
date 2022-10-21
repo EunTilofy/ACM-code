@@ -40,35 +40,25 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+        int all = 0;
+        REP(i, 1, n + 1) {
+            a[i] = read();
+            b[i] = c[i] = 0;
+            while(a[i]%2==0) b[i]++,a[i]/=2;
+            a[i]=i;
+            while(a[i]%2==0) c[i]++,a[i]/=2;
+            all += b[i];
         }
+        int nm = 0;
+        std::sort(c + 1, c + n + 1);
+        int J = n;
+        while(all < n) {
+            all += c[J --];
+            ++nm;
+            if(J == 0) break;
+        }
+        if(all < n) puts("-1");
+        else printf("%d\n", nm);
     }
     return 0;
 }

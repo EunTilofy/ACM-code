@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #define ll long long
-//#define int long long
+#define int long long
 #define db double
 #define ld long double
 #define dbg1(x) cerr<<#x<<"="<<(x)<<" "
@@ -33,42 +33,47 @@ inline int read()
 }
 const int MN = 3e5 + 5;
 int a[MN], b[MN], c[MN], n, m;
+long long lcm(long long x, long long y) {
+    return 1ll * x * y / __gcd(x, y);
+}
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
+        int a, b, c, d;
+        a = read(), b = read(), c = read(), d = read();
+        std::vector<int> _[2];
+        REP(i, 1, a + 1) {
+            if(1ll * i * i > a) break;
+            if(a % i == 0) {
+                _[0].pb(i);
+                if(a / i != i) _[0].pb(a / i);
             }
         }
+        REP(i, 1, b + 1) {
+            if(1ll * i * i > b) break;
+            if(b % i == 0) {
+                _[1].pb(i);
+                if(b / i != i) _[1].pb(b / i);
+            }
+        }
+        bool fl = 0;
+        for(auto x : _[0]) {
+            for(auto y  : _[1]) {
+                long long nm1 = x * y, nm2 = 1ll * a * b / x / y;
+                nm1 = (a / nm1 + 1) * nm1;
+                nm2 = (b / nm2 + 1) * nm2;
+                if(nm1 <= c && nm2 <= d) {
+                    fl = 1;
+                    printf("%lld %lld\n", nm1, nm2);
+                    break;
+                }
+            }
+            if(fl == 1) break;
+        }
+        if(!fl) {puts("-1 -1");}
     }
     return 0;
 }

@@ -37,38 +37,21 @@ signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
-    int T = read();
-    while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+    n = read(), m = read();
+    int mxlen = 0, l = 0;
+    double ans = 0;
+    REP(i, 0, m) {
+        char s[15];
+        scanf("%s", s + 1);
+        if(s[1] == 'p') ans += 900000.00 / (db)n; 
+        else if(s[1] == 'g') ans += 585000.00 / (db)n;
+        else l = i + 1;
+        mxlen = max(mxlen, i - l + 1);
     }
+    mxlen = max(mxlen, n - l);
+    // dbg2(mxlen);
+    ans += 900000.00 * (n - m) / (db)n;
+    ans += 100000.00 * (db)mxlen / (db)n;
+    printf("%lld\n", (int)(ans + 0.5));
     return 0;
 }

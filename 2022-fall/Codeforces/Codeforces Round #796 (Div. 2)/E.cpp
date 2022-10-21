@@ -33,42 +33,33 @@ inline int read()
 }
 const int MN = 3e5 + 5;
 int a[MN], b[MN], c[MN], n, m;
+char s[MN];
+bool cmp(int x, int y){return a[x] < a[y];}
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
-    // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
-    int T = read();
-    while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+    std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
+    cin>>n>>m;
+    string s="";
+    REP(i, 1, m + 1) s = s + '0';
+    REP(i, 0, m) {
+        s[i] = '1';
+        cout<<"? "<<s<<endl;
+        // cout.flush();
+        s[i] = '0';
+        cin>>a[i];
+        b[i] = i;
     }
+    std::sort(b, b + m, cmp);
+    long long tmp = 0;
+    REP(i, 0, m) {
+        s[b[i]] = '1';
+        cout<<"? "<<s<<endl;
+        long long ttmp;
+        cin>>ttmp;
+        if(ttmp == tmp + a[b[i]]) tmp=ttmp;
+        else s[b[i]]='0';
+    }
+    cout<<"! "<<tmp<<endl;
     return 0;
 }

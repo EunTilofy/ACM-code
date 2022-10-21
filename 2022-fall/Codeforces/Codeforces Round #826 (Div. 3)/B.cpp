@@ -40,34 +40,12 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+        if(n == 3 || n == 1) puts("-1");
+        else if(n == 2) puts("2 1");
+        else if(n == 4) puts("4 3 2 1");
+        else {
+            REP(i, 4, n + 1) printf("%d ", i);
+            printf("1 2 3\n");
         }
     }
     return 0;

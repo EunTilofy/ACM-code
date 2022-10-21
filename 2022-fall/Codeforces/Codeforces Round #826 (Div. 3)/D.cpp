@@ -33,6 +33,28 @@ inline int read()
 }
 const int MN = 3e5 + 5;
 int a[MN], b[MN], c[MN], n, m;
+int sol(int l, int r, int vall, int valr) {
+    if(l == r) {
+        if(a[l] == vall) return 0;
+        return -1;
+    }
+    int mid = l + r >> 1;
+    int mid_val = vall + valr >> 1;
+    if(a[l] > mid_val) {
+        // int ret = 1;
+        int retl = sol(l, mid, mid_val + 1, valr);
+        int retr = sol(mid + 1, r, vall, mid_val);
+        if(retl == -1 || retr == -1) return -1;
+        return 1 + retl + retr;
+    }
+    else {
+        int retl = sol(l, mid, vall, mid_val);
+        int retr = sol(mid + 1, r, mid_val + 1, valr);
+        if(retl == -1 || retr == -1) return -1;
+        return retl + retr;
+    }
+    return -1;
+}
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
@@ -40,35 +62,8 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+        REP(i, 1, n + 1) a[i] = read();
+        printf("%d\n", sol(1, n, 1, n));
     }
     return 0;
 }

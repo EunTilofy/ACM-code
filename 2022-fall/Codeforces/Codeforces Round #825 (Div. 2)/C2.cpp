@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #define ll long long
-//#define int long long
+#define int long long
 #define db double
 #define ld long double
 #define dbg1(x) cerr<<#x<<"="<<(x)<<" "
@@ -32,42 +32,45 @@ inline int read()
     return x*f;
 }
 const int MN = 3e5 + 5;
-int a[MN], b[MN], c[MN], n, m;
+int a[MN], b[MN], c[MN], d[MN], n, m;
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
-    int T = read();
-    while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+    n = read();
+    REP(i, 1, n + 1) a[i] = read(), b[i] = i; b[0] = 1;
+    int j = 0;
+    long long ans = 0;
+    REP(i, 1, n + 1) {
+        while(j + 1 <= n && a[j + 1] - j - 1 >= 1 - i) ++j, b[j] = min(b[j], i);
+        ans += j - i + 1;
+        c[i] = j;
+    }
+    j = 0;
+    REP(i, 1, n + 1) {
+        j = min(n, max(j, c[i] + 1));
+        while(j + 1 <= n && a[j + 1] - j - 1 >= 1 - i) ++j;
+        d[i] = j - c[i];
+    }
+
+    REP(i, 1, n + 1) c[i] = c[i] - i + 1 + c[i - 1];
+    REP(i, 1, n + 1) d[i] = d[i] + d[i - 1];
+    // printf("%lld\n", ans);
+    m = read();
+    while(m--) {
+        int pos = read();
+        int x = read();
+        if(a[pos] == x) printf("%lld\n", ans);
+        else if(a[pos] > x) {
+            int upd = max(b[pos], pos - x + 1);
+            long long anss = ans - c[upd - 1] + c[b[pos] - 1];
+            anss += 1ll * (pos - upd + 1 + pos - b[pos]) * (upd - b[pos]) / 2;
+            printf("%lld\n", anss);
+        }
+        else {
+            int upd = max(b[pos - 1], pos - x + 1);
+            long long anss = ans + d[b[pos] - 1] - d[upd - 1];
+            printf("%lld\n", anss);
         }
     }
     return 0;

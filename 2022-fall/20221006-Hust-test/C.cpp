@@ -39,36 +39,15 @@ signed main() {
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+        int x1, y1, x2, y2;
+        x1 = read();
+        y1 = read();
+        x2 = read();
+        y2 = read();
+        bool flag = 1;
+        if(abs(y1 - y2) == 0 && x1 < x2 && (x2 - x1) % 2 == 0) flag = 0;
+        if(abs(y1 - y2) == 1 && x1 < x2 && (x2 - x1) % 2 == 1) flag = 0;
+        puts(flag ? "Walk Alone" : "Salix Leaf");
     }
     return 0;
 }

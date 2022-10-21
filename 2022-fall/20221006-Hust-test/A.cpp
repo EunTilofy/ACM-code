@@ -31,44 +31,33 @@ inline int read()
     while(ch>='0'&&ch<='9'){x=(x<<3)+(x<<1)+ch-'0';ch=getchar();}
     return x*f;
 }
-const int MN = 3e5 + 5;
+const int MN = 1000 + 5;
 int a[MN], b[MN], c[MN], n, m;
+int f[MN][MN];
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
-    int T = read();
-    while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+    int n = read();
+    int ans = 0;
+    REP(i, 1, n + 1) {
+        a[i] = read();
+        b[i] = read();
+    }
+    c[0] = c[1] = 1;
+    REP(i, 2, MN) c[i] = Mul((mod - mod/i), c[mod % i]);
+    REP(i, 1, n + 1) b[i] = Mul(b[i], c[100]);
+    REP(i, 0, 1001) f[n + 1][i] = 0;
+    DREP(j, n, 0) REP(i, 0, 1001) {
+        // dbg1(j);
+        if(i == a[j]) f[j][i] = Add(f[j + 1][i], 1);
+        if(i > a[j]) {
+            f[j][i] = Add(1, Add(Mul(f[j + 1][i - 1], b[j]), Mul(f[j+1][i], Add(1, mod - b[j]))));
+        }
+        if(i < a[j]) {
+            f[j][i] = Add(f[j + 1][a[j]], 1 + Mul(a[j] - i, qpow(b[j], mod - 2)));
         }
     }
+    printf("%d\n", f[1][0]);
     return 0;
 }

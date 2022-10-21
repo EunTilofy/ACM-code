@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #define ll long long
-//#define int long long
+#define int long long
 #define db double
 #define ld long double
 #define dbg1(x) cerr<<#x<<"="<<(x)<<" "
@@ -33,6 +33,17 @@ inline int read()
 }
 const int MN = 3e5 + 5;
 int a[MN], b[MN], c[MN], n, m;
+char s[MN];
+long long cal(int l, int r, int nm) {
+    // dbg1(l); dbg1(r); dbg2(nm); 
+    if(r - l + 1 + nm > n) return 0;
+    if(nm < 0) return 0;
+    if(nm == 0) return 1;
+    long long ret = 0;
+    int leftx = min(l - 1ll, nm);
+    int lefty = max(0ll, nm - (n - r));
+    return max(leftx - lefty + 1, 0ll);
+}
 signed main() {
     // freopen("out.txt", "w", stdout);
     // freopen("in.txt", "r", stdin);
@@ -40,35 +51,19 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+        REP(i, 1, n + 1) a[i] = read() + 1, b[a[i]] = i;
+        int l = n + 1, r = 0;
+        long long ans = 0;
+        REP(med, 1, (n + 3) / 2) {
+            l = min(l, b[med]);
+            r = max(r, b[med]);
+            if(r - l + 1 - med > med) continue;
+            ans += cal(l, r, med - (r - l + 1 - med));
+            // dbg2(ans);
+            ans += cal(l, r, med - 1 - (r - l + 1 - med));
+            // dbg2(ans);
         }
+        printf("%lld\n", ans);
     }
     return 0;
 }

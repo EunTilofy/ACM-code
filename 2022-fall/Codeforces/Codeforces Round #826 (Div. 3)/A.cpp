@@ -38,37 +38,21 @@ signed main() {
     // freopen("in.txt", "r", stdin);
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
+    std::map<char, int> mp;
+    mp['S'] = -1;
+    mp['L'] = 1;
+    mp['M'] = 0;
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+        string s;
+        string t;
+        cin>>s>>t;
+        if(s==t) {puts("=");continue;}
+        int lens = s.size();
+        int lent = t.size();
+        int vals = lens * mp[s[lens - 1]];
+        int valt = lent * mp[t[lent - 1]];
+        if(vals < valt) puts("<");
+        else puts(">");
     }
     return 0;
 }

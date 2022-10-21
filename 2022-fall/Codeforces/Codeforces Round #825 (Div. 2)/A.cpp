@@ -39,36 +39,11 @@ signed main() {
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+        int n = read();
+        int ans1 = 0, nm1 = 0, nm2 = 0;
+        REP(i, 1, n + 1) a[i] = read(), nm1 += a[i];
+        REP(i, 1, n + 1) b[i] = read(), nm2 += b[i], ans1 += (a[i]!=b[i]);
+        printf("%d\n", min(ans1, 1 + abs(nm1-nm2)));
     }
     return 0;
 }

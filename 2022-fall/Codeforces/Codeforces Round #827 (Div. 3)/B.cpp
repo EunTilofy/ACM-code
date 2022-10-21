@@ -39,35 +39,21 @@ signed main() {
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+        n = read(), m = read();
+        long long nm[2]; nm[0] = nm[1] = 0;
+        long long ans = 0;
+        REP(i, 1, n + 1) ans += (a[i] = read()), nm[a[i]&1]++;
+            // dbg3(xxx);
+            // dbg1(n); dbg2(m);
+        REP(i, 1, m + 1) {
+            int t = read();
+            int x = read();
+            ans += 1ll * x * nm[t];
+            int _ = nm[t];
+            nm[t] = 0;
+            nm[(t + x) & 1] += _;
+            printf("%lld\n", ans);
+            // dbg1(t); dbg2(x);
         }
     }
     return 0;

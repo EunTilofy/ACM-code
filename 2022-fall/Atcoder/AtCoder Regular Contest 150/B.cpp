@@ -39,35 +39,29 @@ signed main() {
     // std::ios::sync_with_stdio(false); std::cin.tie(nullptr);
     int T = read();
     while(T--) {
-        n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
+        n = read(), m = read();
+        int r = m % n;
+        int nn = n;
+        if(m <= n) {
+            printf("%d\n", n - m);
+            continue;
+        }
+        if(r == 0) puts("0");
+        else {
+            int ned = n - r;
+            while(n <= m) {
+                n = (m/(m/n));
+                int rr = m % n;
+                if(rr > 0) rr = n - rr;
+                ned = min(ned, n - nn + rr);
+
+                n = (m/(m/n))+1;
+                // if(n > m) break;
+                rr = m % n;
+                if(rr > 0) rr = n - rr;
+                ned = min(ned, n - nn + rr);
             }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
+            printf("%d\n", ned);
         }
     }
     return 0;

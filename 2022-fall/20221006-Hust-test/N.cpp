@@ -40,35 +40,18 @@ signed main() {
     int T = read();
     while(T--) {
         n = read();
-        long long mins = 1, maxt = 1;
-        long long nms = 1, nmt = 1;
-        long long lens = 1, lent = 1;
-        while(n --) {
-            int opt = read();
-            m = read();
-            string s;
-            std::cin>>s;
-            if(opt == 1) {
-                lens += 1ll * m * s.size();
-                int _ = 0;
-                for(auto x : s) _ += x == 'a';
-                nms += 1ll * _ * m;
-            }
-            else {
-                int _ = 0;
-                for(auto x : s) {
-                    _ += x == 'a';
-                    maxt = max(maxt, x - 'a' + 1ll);
-                }
-                nmt += 1ll * _ * m;
-                lent += 1ll * m * s.size();
-            }
-            if(mins != maxt) puts("YES");
-            else {
-                if(nms == lens && (nmt > nms || nmt == nms && lent > lens)) puts("YES");
-                else puts("NO");
-            }
-        }
+        if(n % 2 == 0) printf("%d %d\n", n, n * 2);
+        else if(n == 1) printf("2 3\n");
+        else if(n % 3 != 0) printf("%d %d\n", 2 * n, 3 * n);
+        else if(n % 5 != 0) printf("%d %d\n", 4 * n, 5 * n);
+        else if(n % 7 != 0) printf("%d %d\n", 6 * n, 7 * n);
+        else if(n % 11 != 0) printf("%d %d\n", 10 * n, 11 * n);
+        else if(n % 13 != 0) printf("%d %d\n", 12 * n, 13 * n);
+        else if(n % 17 != 0) printf("%d %d\n", 16 * n, 17 * n);
+        else if(n % 19 != 0) printf("%d %d\n", 18 * n, 19 * n);
+        else if(n % 23 != 0) printf("%d %d\n", 22 * n, 23 * n);
+        else if(n % 29 != 0) printf("%d %d\n", 28 * n, 29 * n);
+
     }
     return 0;
 }
