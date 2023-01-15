@@ -12,18 +12,29 @@ typedef pair<ll,ll> pll;
 inline int qpow(int x,ll y,int m=mod){int r=1;for(;y;y>>=1,x=(ll)x*x%m)if(y&1)r=(ll)r*x%m;return r;}
 inline int Add(int x, int y){return (x + y) % mod;}
 inline int Mul(int x, int y){return 1ll * x * y % mod;}
-const int MN = 3e5 + 5;
-int a[MN], b[MN], c[MN];
-
+const int MN = 1e6+5;
+int f[MN][26];
 void solve(){
-	int n, m;
-
+	string s, t;
+	cin >> s >> t;
+	int n = s.size();
+	int m = t.size();
+	s = s + s;
+	for(int i = 2*n-1; i; --i) {
+		for(int j = 0; j < 26; ++j) f[i-1][j] = f[i][j];
+		f[i - 1][s[i]-'a'] = i;
+	}
+	int now = s[0] == t[0] ? 0 : f[0][t[0]-'a'];
+	int ans = 1;
+	for(int i = 1; i < m; ++i) {
+		if(f[now][t[i]-'a'] >= n) ++ans, now = f[now][t[i]-'a'] - n;
+		else now = f[now][t[i]-'a'];
+	}
+	cout << ans << endl;
 }
 
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0);
-	int T;
-	cin>>T;
-	while(T--) 
-		solve();
+	solve();
+	return 0;
 }

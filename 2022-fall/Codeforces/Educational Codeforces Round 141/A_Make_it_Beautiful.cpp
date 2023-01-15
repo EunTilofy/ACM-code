@@ -1,4 +1,4 @@
-#include"bits/stdc++.h"
+#include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef pair<int,int> pii;
@@ -17,13 +17,22 @@ int a[MN], b[MN], c[MN];
 
 void solve(){
 	int n, m;
-
+	cin >> n;
+	for(int i = 1; i <= n; ++i) cin >> a[i];
+	sort(a+1,a+n+1);
+	if(a[1] == a[n] && n >= 2) {
+		cout << "NO" << endl;
+        return;
+	}
+    cout << "YES" << endl;
+    cout << a[1] << " ";
+    for(int i = n; i > 1; --i) cout << a[i] << " ";
+    cout << endl;
 }
 
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0);
 	int T;
 	cin>>T;
-	while(T--) 
-		solve();
+	while(T--) solve();
 }
