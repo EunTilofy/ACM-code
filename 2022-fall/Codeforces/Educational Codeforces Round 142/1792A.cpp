@@ -17,7 +17,19 @@ int a[MN], b[MN], c[MN];
 
 void solve(){
 	int n, m;
-
+    cin >> n;
+    for(int i = 1; i <= n; ++i) cin >> a[i];
+    std::sort(a+1,a+n+1);
+    int ans = 0;
+    for(int i = 1; i + 1 <= n; i += 2) {
+        if(a[i] + (a[i+1] > a[i]) <= 2) {
+            // cout << "sss" << a[i] + (a[i+1] > a[i]) << endl;
+            ans += a[i] + (a[i+1] > a[i]);
+        }
+        else ans += 2;
+    }
+    if(n&1) ans+=1;
+    cout << ans << endl;
 }
 
 int main(){

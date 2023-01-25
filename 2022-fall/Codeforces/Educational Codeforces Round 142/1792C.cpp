@@ -17,7 +17,18 @@ int a[MN], b[MN], c[MN];
 
 void solve(){
 	int n, m;
-
+    cin >> n;
+    for(int i = 1; i <= n; ++i) cin >> a[i], b[a[i]] = i;
+    int ans = n/2;
+    // cout << ans << endl;
+    for(int i = 1; i <= n; ++i) {
+        int j = i;
+        while(j < n && b[j + 1] > b[j]) ++j;
+        // cout << i << " " << j <<" " << max(i-1, n-j)<< endl;
+        ans = min(ans, max(i-1, n-j));
+        i = j;
+    }
+    cout << ans << endl;
 }
 
 int main(){

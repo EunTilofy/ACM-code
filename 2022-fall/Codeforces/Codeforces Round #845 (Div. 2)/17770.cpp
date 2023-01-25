@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include"bits/stdc++.h"
 using namespace std;
 typedef long long ll;
 typedef pair<int,int> pii;
@@ -17,7 +17,14 @@ int a[MN], b[MN], c[MN];
 
 void solve(){
 	int n, m;
-
+    cin>>n;
+    for(int i = 1; i <= n; ++i) cin >> a[i];
+    int cnt = 1;
+    int nw = a[1]&1;
+    for(int i = 2; i <= n; ++i) {
+        if((a[i]&1) != nw) nw ^= 1, ++cnt; 
+    }
+    cout << n - cnt << endl;
 }
 
 int main(){
