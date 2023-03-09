@@ -1,0 +1,1 @@
+{"name":"Local: H","url":"/Users/pac/Documents/2022-f/ACM/2023-spring/THUPC-pre/H.cpp","tests":[{"id":1677998316175,"input":"2 2\n6 10\n8 15\n100000000001\n100000000002","output":"-1\n187500000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/pac/Documents/2022-f/ACM/2023-spring/THUPC-pre/H.cpp","group":"local","local":true}
