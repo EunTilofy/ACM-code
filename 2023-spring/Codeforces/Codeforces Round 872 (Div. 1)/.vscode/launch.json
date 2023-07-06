@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/pac/Documents/2022-f/ACM/2023-spring/Codeforces/Codeforces Round 872 (Div. 1)",
+      "program": "/Users/pac/Documents/2022-f/ACM/2023-spring/Codeforces/Codeforces Round 872 (Div. 1)/build/Debug/outDebug"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.9.12)  13 SEP 2022 00:22
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.9.22)  18 MAR 2023 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -740,7 +740,8 @@ Package fontspec Info: Font family 'PingFangSC(0)' created for font 'PingFang
 (fontspec)             SC/BI/OT:script=hani;language=dflt;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
- (./template.aux)
+
+No file template.aux.
 \openout1 = `template.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
@@ -763,7 +764,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
 LaTeX Font Info:    ... okay on input line 113.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 113.
 LaTeX Font Info:    ... okay on input line 113.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -811,9 +811,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 113.
 LaTeX Info: Redefining \pageref on input line 113.
 LaTeX Info: Redefining \nameref on input line 113.
- (./template.out) (./template.out)
 \@outlinefile=\write5
 \openout5 = `template.out'.
+
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 113.
@@ -857,7 +860,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  TU/lmss/m/it --> TU/lmss/b/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/lmtt/m/n --> TU/lmtt/b/n on input line 113.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
+(/usr/local/texlive/2022/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
 Dictionary: translator-bibliography-dictionary, Language: English 
@@ -929,7 +932,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  TU/lmss/b/n --> TU/lmss/b/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/lmtt/b/n --> TU/lmtt/b/n on input line 113.
- (./template.nav)
+
+No file template.nav.
 Missing character: There is no 5 ("35) in font nullfont!
 [1
 
@@ -965,14 +969,20 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
 \openout8 = `template.snm'.
 
  (./template.aux)
-Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+Package rerunfilecheck Warning: File `template.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `template.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27139 strings out of 476179
- 601848 string characters out of 5809544
- 903915 words of memory out of 5000000
- 47304 multiletter control sequences out of 15000+600000
+ 27118 strings out of 476179
+ 601649 string characters out of 5809544
+ 903594 words of memory out of 5000000
+ 47291 multiletter control sequences out of 15000+600000
  476165 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,15n,122p,454b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
