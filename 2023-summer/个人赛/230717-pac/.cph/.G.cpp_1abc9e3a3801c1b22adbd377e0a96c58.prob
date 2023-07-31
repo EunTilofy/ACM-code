@@ -1,0 +1,1 @@
+{"name":"Local: G","url":"c:\\Users\\31355\\Desktop\\Forever_OIer\\ACM\\230717-pac\\G.cpp","tests":[{"id":1689562386085,"input":"3 6\n1 3 2\n1 1\n1 2\n1 3\n2 2\n2 3\n3 3","output":"1\n3\n2\n1\n2\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\31355\\Desktop\\Forever_OIer\\ACM\\230717-pac\\G.cpp","group":"local","local":true}

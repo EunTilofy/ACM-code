@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"/Users/pac/Documents/2022-f/ACM/2023-summer/个人赛/20230707/E.cpp","tests":[{"id":1688712255552,"input":"5 7\n1 2 1\n1 3 -2\n2 3 1\n3 4 3\n4 5 1\n1 5 -1\n2 5 2","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/pac/Documents/2022-f/ACM/2023-summer/个人赛/20230707/E.cpp","group":"local","local":true}

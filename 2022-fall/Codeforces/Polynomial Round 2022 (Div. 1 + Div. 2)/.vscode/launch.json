@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "d:/2022-s/ACM/2022-fall/Codeforces/Polynomial Round 2022 (Div. 1 + Div. 2)",
-      "program": "d:/2022-s/ACM/2022-fall/Codeforces/Polynomial Round 2022 (Div. 1 + Div. 2)/build/Debug/outDebug",
+      "externalConsole": false,
+      "cwd": "/Users/pac/Documents/2022-f/ACM/2022-fall/Codeforces/Polynomial Round 2022 (Div. 1 + Div. 2)",
+      "program": "/Users/pac/Documents/2022-f/ACM/2022-fall/Codeforces/Polynomial Round 2022 (Div. 1 + Div. 2)/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

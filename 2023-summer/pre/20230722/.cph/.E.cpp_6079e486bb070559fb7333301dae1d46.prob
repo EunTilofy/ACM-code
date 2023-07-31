@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"/Users/pac/Documents/2022-f/ACM/2023-summer/pre/20230722/E.cpp","tests":[{"id":1689988189083,"input":"5\n10\n55\n101\n1000\n1234321\n","output":"10\n55\n-1\n715\n94708"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/pac/Documents/2022-f/ACM/2023-summer/pre/20230722/E.cpp","group":"local","local":true}

@@ -18,7 +18,7 @@ inline int Mul(int x, int y){return 1ll * x * y % mod;}
 #define cerr std::cerr
 #define cout std::cout
 #define cin std::cin
-const int MN = 3e5 + 5;
+const int MN = 4e5 + 5;
 int a[MN], b[MN], c[MN];
 
 void solve(){
