@@ -1,0 +1,1 @@
+{"name":"Local: F","url":"/Users/pac/Documents/2022-f/ACM/2023-summer/summer2023/0810/F.cpp","tests":[{"id":1691638337831,"input":"3\n5\n2 3\n3 2\n3 3\n3 3\n3 3\n1\n2 4\n2\n1 1\n3 2","output":"3 1 1\n-1 -1 -1\n2 1 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/pac/Documents/2022-f/ACM/2023-summer/summer2023/0810/F.cpp","group":"local","local":true}

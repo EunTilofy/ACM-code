@@ -1,0 +1,1 @@
+{"name":"Local: EE","url":"/Users/pac/Documents/2022-f/ACM/2023-summer/summer2023/0806/EE.cpp","tests":[{"id":1691293024600,"input":"8 5\n2 8 3 5 1 9 42 3\n5 5\n1 3\n6 8\n1 8\n2 7","output":"-1\n2\n2\n4\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/pac/Documents/2022-f/ACM/2023-summer/summer2023/0806/EE.cpp","group":"local","local":true}

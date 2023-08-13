@@ -1,0 +1,87 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e5+5;
+struct edge{
+  int u,v;
+  int f[2][2];
+  edge(){
+    memset(f, 0, sizeof f);
+    u = v = 0;
+  }
+  edge(int uu, int vv) : u(uu), v(vv) {
+    memset(f, 0, sizeof f);
+    u = v = 0;
+  }
+}t[N];
+unordered_set<int>e[N];
+int ans(edge a,edge b){
+  if(a.v==b.u){
+  }
+  else if(a.u==b.u){
+    a.rev();
+  }
+  else if(a.v==b.v){
+    b.rev();
+  }
+  else {
+    a.rev();
+    b.rev();
+  }
+  ++indec;
+  t[indec].u=a.u;
+  t[indec].v=b.v;
+  for(int i:{0,1})for(int j:{0,1})for(int k:{0,1}){
+    if(i==0&&j==0){
+      t[indec].f[1][k]=max(t[indec].f[1][k],a.f[0][0]+b.f[0][k]+1);
+    }
+    if(k==0&&j==0){
+      t[indec].f[i][1]=max(t[indec].f[i][1],a.f[i][0]+b.f[0][0]+1);
+    }
+  }
+  return indec;
+}
+void solve(){
+  for(int i=1;i<=n;i++){
+    if(e[i].size()==2){
+      q.push_back(i);
+    }
+  }
+  while(!q.empty()){
+    int x=q.front();
+    if(e[x].size!=2)assert(0);
+    int e1=e[x][0];
+    int e2=e[x][1];
+    int cur=trans(u,v);
+    e[E[cur].u].erase(e1);
+    e[E[cur].v].erase(e2);
+    e[E[cur].u].insert(cur);
+    e[E[cur].v].insert(cur);
+    if(e[E[cur].v].size()==2){
+      q.push(E[cur].v);
+    }
+    if(e[E[cur].u].size()==2){
+      q.push(E[cur].u);
+    }
+  }
+  for(int i=1;i<=n;i++){
+    if(e[i].size()==1){
+      int x=e[i][0];
+      return max(max(E[x].f[0][0],E[x].f[0][1]),max(E[x].f[1][0],E[x].f[1][1]));
+    }
+  }
+}
+int main(){
+  int T;
+  while(T--){
+    int n,m;
+    scanf("%d%d",&n,&m);
+    for(int i=1;i<=m;i++){
+      int x,y;
+      scanf("%d%d",&x,&y);
+      t[++indec]=edge(x,y);
+      e[x].push_back(indec);
+      e[y].push_back(indec);
+    }
+    printf("%d\n",solve());
+  }
+}

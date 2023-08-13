@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/pac/Documents/2022-f/ACM/2023-summer/summer2023/0808",
+      "program": "/Users/pac/Documents/2022-f/ACM/2023-summer/summer2023/0808/build/Debug/outDebug"
+    }
+  ]
+}
