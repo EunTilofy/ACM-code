@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/pac/Documents/ACM/2023-summer/codeforces/Pinely Round 2 (Div. 1 + Div. 2)",
+      "program": "/Users/pac/Documents/ACM/2023-summer/codeforces/Pinely Round 2 (Div. 1 + Div. 2)/build/Debug/outDebug"
+    }
+  ]
+}
