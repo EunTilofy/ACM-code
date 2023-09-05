@@ -1,0 +1,1 @@
+{"name":"Local: J","url":"c:\\Users\\ZJUICPC\\Desktop\\20230414\\J.cpp","tests":[{"id":1681485570539,"input":"100000 5\n64928 95264\n64928 16114\n95264 16114\n64928 39868\n16114 39868","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ZJUICPC\\Desktop\\20230414\\J.cpp","group":"local","local":true}

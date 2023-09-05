@@ -1,0 +1,1 @@
+{"name":"Local: L","url":"c:\\Users\\ZJUICPC\\Desktop\\20230530\\L.cpp","tests":[{"id":1685458260072,"input":"5 3 4","output":""},{"id":1685458270788,"input":"1 1 1","output":""},{"id":1685458676819,"input":"10 6 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ZJUICPC\\Desktop\\20230530\\L.cpp","group":"local","local":true}

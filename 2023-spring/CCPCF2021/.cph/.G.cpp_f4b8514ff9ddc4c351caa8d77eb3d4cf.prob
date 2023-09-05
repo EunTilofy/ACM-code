@@ -1,0 +1,1 @@
+{"name":"Local: G","url":"c:\\Users\\ZJUICPC\\Desktop\\CCPCF2021\\G.cpp","tests":[{"id":1683641397836,"input":"4\n1 3\n1 6\n4 100\n1 10\n2 16\n1 7\n12 13\n3 5\n1 8\n20 20\n13 18\n3 2\n1 10\n2 9\n3 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ZJUICPC\\Desktop\\CCPCF2021\\G.cpp","group":"local","local":true}

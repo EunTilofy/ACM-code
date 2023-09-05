@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"c:\\Users\\ZJUICPC\\Desktop\\20230530\\A.cpp","tests":[{"id":1685448913734,"input":"2\n4 5\n6 12\n1 3\n6 15\n8 1\n3 100\n3 200\n4 300\n6 100","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ZJUICPC\\Desktop\\20230530\\A.cpp","group":"local","local":true}
