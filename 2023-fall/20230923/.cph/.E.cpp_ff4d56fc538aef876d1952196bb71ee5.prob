@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"c:\\Users\\ZJUICPC\\Desktop\\20230923\\E.cpp","tests":[{"id":1695444582826,"input":"10 6\n1 2 1 4 4 6 7 2 9\n1 4\n3 6\n3 7\n9 4\n5 10\n3 4","output":"2 2 1 -1 3 3 -1 2 -1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ZJUICPC\\Desktop\\20230923\\E.cpp","group":"local","local":true}
