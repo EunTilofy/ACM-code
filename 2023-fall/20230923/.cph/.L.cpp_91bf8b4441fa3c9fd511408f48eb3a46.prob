@@ -1,0 +1,1 @@
+{"name":"Local: L","url":"c:\\Users\\ZJUICPC\\Desktop\\20230923\\L.cpp","tests":[{"id":1695443055129,"input":"4\npbbp\nppp\npbbpbb\npbpbpbpb","output":"2\n2\n4\n6"},{"id":1695443475781,"input":"1\naaaaaaaa","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ZJUICPC\\Desktop\\20230923\\L.cpp","group":"local","local":true}
