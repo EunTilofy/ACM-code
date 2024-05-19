@@ -31,9 +31,6 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
 
 const int N = 4e5 + 5;
 // int a[N], b[N], c[N];
@@ -45,7 +42,11 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n, x, y, a, b;
+        cin >> n >> x >> y >> a >> b;
+        int ans = min(n / y, b / x + min(b / x - 1, a / x));
+        if (ans <= 0) ans = -1;
+        cout << ans << "\n";
 	}
     return 0;
 }

@@ -31,21 +31,52 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
+// #define cout std::cout
 
 const int N = 4e5 + 5;
-// int a[N], b[N], c[N];
+int f[2005][2005], g[2005][2005];
 
 int main()
 {
 	ios::sync_with_stdio(0); cin.tie(0);
-	cout<<fixed<<setprecision(15);
-	int T; cin>>T;
-	while (T--)
-	{
+	std::cout<<fixed<<setprecision(15);
+	int n, m;
+    cin >> n >> m;
+    swap(n, m);
+    if(m == 1)
+    { 
+        std::cout << n << "\n"; return 0; 
+    }
+    if(n == 1)
+    {
+        std::cout << 0 << "\n"; return 0;
+    }
+    // f[len][num]
+    f[2][2] = 2;
+    for(int num = 2; num <= m; num += 2) g[2][num] = 2;
 
-	}
+    for(int len = 3; len <= n; ++len)
+    {
+        for(int num = len; num <= m; ++num)
+        {
+            f[len][num] = g[len-1][num-1];
+            if(num - len > 0) f[len][num] = Add(f[len][num], g[len-1][num-len+1]);
+        }
+        for(int num = len; num <= m; ++num)
+        {
+            g[len][num] = Add(g[len][num - 2], f[len][num]);
+        }
+    }
+
+    int ans = 0;
+
+    for(int len = 2; len <= n; ++len)
+        for(int num = 2; num <= m; ++num)
+        {
+            ans = Add(ans, Mul(f[len][num], n-len+1));
+        }
+
+    std::cout << ans << "\n";
+
     return 0;
 }

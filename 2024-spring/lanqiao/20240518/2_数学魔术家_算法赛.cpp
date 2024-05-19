@@ -31,9 +31,6 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
 
 const int N = 4e5 + 5;
 // int a[N], b[N], c[N];
@@ -42,10 +39,21 @@ int main()
 {
 	ios::sync_with_stdio(0); cin.tie(0);
 	cout<<fixed<<setprecision(15);
-	int T; cin>>T;
+	int T = 1;
 	while (T--)
 	{
-
-	}
+        string s;
+        cin >> s;
+        vector<int> ton(10);
+        for(int i = 0; i < s.size(); ++i) ton[s[i] - '0']++;
+        string t1 = "", t2 = "";
+        for(int i = 9; i >= 0; --i) for(int j = 0; j < ton[i]; ++j) t1 += (char)('0' + i);
+        // dbg(t1); exit(0);
+        int I = 1;
+        while(ton[I] == 0 && I <= 9) ++I;
+        if(I < 10) ton[I]--, t2 += (char)('0' + I); 
+        for(int i = 0; i <= 9; ++i) for(int j = 0; j < ton[i]; ++j) t2 += (char)('0' + i);
+        cout << t1 << " " << t2 << "\n";
+	}   
     return 0;
 }

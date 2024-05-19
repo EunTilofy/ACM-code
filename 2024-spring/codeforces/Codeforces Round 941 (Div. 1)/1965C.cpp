@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef pair<int,int> pii;
+typedef pair<ll,ll> pll;
+#define all(x) x.begin(),x.end()
+#define fi first
+#define se second
+#define pb push_back
+#define mkp make_pair
+#define mod 998244353
+#define dbg1(x) cerr << #x << '=' << (x) << ' '
+#define dbg2(x) cerr << #x << '=' << (x) << '\n'
+#define dbg3(x) cerr << #x << '\n'
+inline int fpow(int x,ll y,int m=mod){int r=1;for(;y;y>>=1,x=(ll)x*x%m)if(y&1)r=(ll)r*x%m;return r;}
+inline int Add(int x, int y){return (x + y) % mod;}
+inline int Mul(int x, int y){return 1ll * x * y % mod;}
+inline int Dec(int x, int y){return (x+mod-y)%mod;}
+#define cerr std::cerr
+#define cout std::cout
+#define cin std::cin
+const int MN = 4e5 + 5;
+int a[MN], b[MN], c[MN];
+
+void solve()
+{
+	int n, m;
+    cin >> n;
+    string s;
+    cin >> s;
+    vector<int> a, c;
+    for(int i = 0; i < n; ++i)
+    {
+        int j = i;
+        while(j+1<n&&s[j+1]==s[i]) ++j;
+        a.push_back(s[i]-'0');
+        if(j%2!=i%2) 
+        {
+            if(a.size() > 1) a.push_back(s[i]-'0');
+        }
+        i = j;
+    }
+    if(a.size() > 1 && a.back() == a[a.size() - 2]) a.pop_back();
+    for(int i = 0; i < a.size(); ) 
+    {
+        int j = i+1;
+        while(j < a.size() && a[j] != a[j-1]) ++j;
+        c.push_back(j-i);
+        i = j;
+    }
+    int len = 0, pos = 0, add = 1;
+    for(auto x : c)
+    {
+        // cerr << x << " ";
+        if(add == 1)
+        {
+            len = max(pos + x, len);
+            pos += x;
+        }
+        else
+        {
+            if(pos >= x) pos -= x;
+            else len += x - pos, pos = 0;
+        }
+        add = - add;
+    }
+    // cerr << "\n";
+    cout << len << "\n";
+    return ;
+}
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int T;
+	cin>>T;
+	while(T--) solve();
+}

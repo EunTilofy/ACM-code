@@ -31,21 +31,55 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
 
-const int N = 4e5 + 5;
-// int a[N], b[N], c[N];
+const int N = 1e6 + 5, M = 1e6+5;
+bool in[N];
+
+bool np[M];
+int pri[M],cnt=0,mp[M];
+void sieve(int n){
+    np[1]=1;
+    for(int i=2;i<=n;++i){
+        if(!np[i])pri[++cnt]=i,mp[i]=i;
+        for(int j=1;j<=cnt&&i*pri[j]<=n;++j){
+            np[i*pri[j]]=1;
+            mp[i*pri[j]]=pri[j];
+            if(!(i%pri[j]))break;
+        }
+    }
+}
 
 int main()
 {
 	ios::sync_with_stdio(0); cin.tie(0);
-	cout<<fixed<<setprecision(15);
-	int T; cin>>T;
+	std::cout<<fixed<<setprecision(15);
+	int T = 1;
+    sieve(1000000);
 	while (T--)
 	{
-
+        int n;
+        cin >> n;
+        vector<int> a(n); cin >> a;
+        map<int, int> b;
+        // set<int> p;
+        for(int i = 0; i < n; ++i)
+        {
+            int x = a[i];
+            while(x != 1)
+            {
+                int j = mp[x];
+                int _ = 0;
+                while(x % j == 0) x /= j, _ ^= 1;
+                if(_ == 1) b[j] ++;
+            }
+            // if(x != 1) b[i][x] = 1, in[x] = 1;
+        }
+        int ans = 0;
+        for(auto [v, vv] : b)
+        {
+            ans += min(vv, n - vv);
+        }
+        std::cout << ans << "\n";
 	}
     return 0;
 }

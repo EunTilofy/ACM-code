@@ -31,21 +31,59 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
-
-const int N = 4e5 + 5;
-// int a[N], b[N], c[N];
 
 int main()
 {
 	ios::sync_with_stdio(0); cin.tie(0);
 	cout<<fixed<<setprecision(15);
-	int T; cin>>T;
-	while (T--)
-	{
-
-	}
+	int N, M;
+    cin >> N >> M; vector<int> a(N); cin >> a;
+    vector<pair<int, int>> que(M); cin >> que;
+    vector rmq = vector(18, vector<int>(N));
+    for(int i = 0; i < N; ++i) rmq[0][i] = i;
+    auto maxi = [&](int x, int y) -> int
+    {
+        return a[x] > a[y] ? x : y;
+    };
+    for(int j = 1; j < 18; ++j) for(int i = 0; i < N; ++i)
+    {
+        if(i + (1<<j) - 1 >= N) break;
+        rmq[j][i] = maxi(rmq[j-1][i], rmq[j-1][i+(1<<(j-1))]);
+    }
+    auto get = [&](int x, int y) -> int 
+    {
+        --x, --y;
+        if(x > y) swap(x, y);
+        int _ = 31 - __builtin_clz(y - x + 1);
+        // dbg(x, y, max(rmq[_][x], rmq[_][y - (1<<_) + 1]));
+        return maxi(rmq[_][x], rmq[_][y - (1<<_) + 1]);
+    };
+    vector<int> nex(N), num(N);
+    stack<int> q;
+    for(int i = N-1; i >= 0; --i) 
+    {
+        while(!q.empty() && a[q.top()] <= a[i]) q.pop();
+        if(q.empty()) nex[i] = N;
+        else nex[i] = q.top();
+        num[i] = q.size();
+        // dbg(i, num[i]);
+        q.push(i);
+    }
+    for(auto [x, y] : que)
+    {
+        if(x > y) swap(y, x);
+        int val = a[get(x, y)];
+        int L = y, R = N, pos = N+1;
+        while(L <= R)
+        {
+            int mid = (L+R)>>1;
+            if(a[get(y, mid)] <= val) L = mid + 1;
+            else pos= mid, R = mid - 1;
+        }
+        int ans = 0;
+        // dbg2(pos);
+        if(pos != N+1) ans = num[pos - 1] + 1;
+        cout << ans << "\n";
+    }
     return 0;
 }

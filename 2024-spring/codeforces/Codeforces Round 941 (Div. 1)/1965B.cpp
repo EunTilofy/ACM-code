@@ -19,24 +19,24 @@ inline int Add(int x, int y){return (x + y) % MOD;}
 inline int Mul(int x, int y){return 1ll * x * y % MOD;}
 inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #if !defined(ONLINE_JUDGE)&&defined(LOCAL)
-#include "my_header/IO.h"
 #include "my_header/defs.h"
+#include "my_header/IO.h"
 #else
 #define dbg(...) ;
 #define dbgx(...) ;
 #define dbg1(x) ;
 #define dbg2(x) ;
 #define dbg3(x) ;
+#define dbgx1(x) ;
+#define dbgx2(x) ;
+#define dbgx3(x) ;
 #define DEBUG(msg) ;
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
 
 const int N = 4e5 + 5;
-// int a[N], b[N], c[N];
+int a[N], b[N], c[N];
 
 int main()
 {
@@ -45,7 +45,22 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n, m;
+        cin >> n >> m;
+        int num = 1;
+        int mx = log2(m);
+        multiset<int> a;
+        for(int i = 0; i < mx; ++i) a.insert(1<<i);
+        int now = (1<<mx) - 1;
+        if(m-1-now > 0) a.insert(m-1-now);
+        if(m < n) a.insert(m+1);
+        now = m*2;
+        while(now < n) a.insert(now+1), now = 2*now+1;
+        a.insert(m * 3);
+        a.insert(m * 4);
+        cout << a.size() << "\n";
+        for(auto x : a) cout << x << " ";
+        cout << "\n";
 	}
     return 0;
 }

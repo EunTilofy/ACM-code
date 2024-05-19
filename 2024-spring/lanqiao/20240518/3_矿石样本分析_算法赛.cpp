@@ -31,9 +31,6 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
 
 const int N = 4e5 + 5;
 // int a[N], b[N], c[N];
@@ -42,10 +39,46 @@ int main()
 {
 	ios::sync_with_stdio(0); cin.tie(0);
 	cout<<fixed<<setprecision(15);
-	int T; cin>>T;
+	int T = 1;
 	while (T--)
 	{
-
+        map<int, int> mp, mp2;
+        int n, m;
+        cin >> n >> m;
+        for(int i = 1; i <= n; ++i)
+        {
+            int x;
+            cin >> x;
+            int val = min(i, n - i + 1);
+            if(mp.count(x) == 0) mp[x] = val;
+            else 
+            {
+                if(mp[x] > val) mp2[x] = mp[x], mp[x] = val;
+                else 
+                {
+                    if(mp2.count(x) == 0) mp2[2] = val;
+                    else mp2[x] = min(mp2[x], val);
+                }
+            }
+        }
+        int ans = -1;
+        for(auto [x, v] : mp)
+        {
+            if(x == m - x)
+            {
+                if(mp2.count(x))
+                {
+                    if(ans == -1) ans = mp2[x];
+                    else ans = min(ans, mp2[x]);
+                }
+            }
+            else if(mp.count(m - x))
+            {
+                if(ans == -1) ans = max(v, mp[m-x]);
+                else ans = min(ans, max(v, mp[m-x]));
+            }
+        }
+        cout << ans << "\n";
 	}
     return 0;
 }

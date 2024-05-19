@@ -19,8 +19,8 @@ inline int Add(int x, int y){return (x + y) % MOD;}
 inline int Mul(int x, int y){return 1ll * x * y % MOD;}
 inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #if !defined(ONLINE_JUDGE)&&defined(LOCAL)
-#include "my_header/IO.h"
 #include "my_header/defs.h"
+#include "my_header/IO.h"
 #else
 #define dbg(...) ;
 #define dbgx(...) ;
@@ -31,12 +31,9 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-#define cout std::cout
-#define cin std::cin
-#define cerr std::cerr
 
 const int N = 4e5 + 5;
-// int a[N], b[N], c[N];
+int a[N], b[N], c[N];
 
 int main()
 {
@@ -45,7 +42,23 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n, m;
+        string s, t;
+        cin >> n >> m;
+        cin >> s >> t;
+        int i, j;
+        for(i = 0, j = 0; i < n; ++i)
+        {
+            while(j < m && s[i] != t[j]) ++j;
+            // dbg(i, j);
+            if(j >= m)
+            {
+                break;
+            }
+            ++j;
+        }
+        cout << i << "\n";
+        // dbg(n, m, s, t);
 	}
     return 0;
 }
