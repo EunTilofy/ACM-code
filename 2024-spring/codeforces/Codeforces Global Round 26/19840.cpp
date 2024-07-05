@@ -41,7 +41,19 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n; vector<int> a(n); cin >> a;
+        if(max_element(all(a)) == min_element(all(a))) 
+        {
+            cout << "NO\n";
+        }
+        else
+        {
+            cout << "YES\n";
+            int I = 2;
+            if(a[1] == a[0]) I = 1;
+            for(int i=0;i<n;++i) if(i==I) cout<<"R"; else cout<<"B";
+            cout << "\n";
+        }
 	}
     return 0;
 }

@@ -41,7 +41,24 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
+        long long n, c;
+        cin >> n >> c; vector<long long> a(n); cin >> a;
+        vector<long long> b(n+1); b[n] = -1;
+        b[n-1] = a[n-1]; for(int i = n-2; i>=0; --i) b[i] = max(a[i], b[i+1]);
+        vector<long long> pre(n); pre[0] = a[0]; for(int i = 1; i < n; ++i) pre[i] = pre[i-1] + a[i];
+        vector<int> ans(n);
+        for(int i=0; i<n; ++i) 
+        {
+            ans[i] = i;
+            if(pre[i]+c<b[i+1]) ++ans[i];
+        }
 
+        a[0]+=c;
+        int id = 0;
+        for(int i = 1; i<n; ++i) if(a[i] > a[id]) id = i;
+        ans[id] = 0;
+        
+        for(int i=0; i<n; ++i) cout << ans[i] << " "; cout << "\n";
 	}
     return 0;
 }

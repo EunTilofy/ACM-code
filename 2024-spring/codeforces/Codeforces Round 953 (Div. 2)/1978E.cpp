@@ -41,7 +41,44 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
+        int n; cin >> n;
+        string s, t; cin >> s >> t;
+        int Q; cin >> Q;
+        vector<pii> q(Q); cin >> q;
 
+        vector<int> ok(n);
+        for(int i=0; i<n; ++i) 
+        {
+            if(s[i]=='1') ok[i]=1;
+            else 
+            {
+                bool flg = 1;
+                flg &= ((i>0&&t[i-1]=='1')||(i>1&&s[i-2]=='0'));
+                flg &= ((i<n-1&&t[i+1]=='1')||(i<n-2&&s[i+2]=='0'));
+                ok[i]=flg;
+            }
+        }
+        for(int i=1;i<n;++i) ok[i]+=ok[i-1];
+        auto cal = [&](int l, int r, int i) -> int
+        {
+            if(s[i]=='1') return 1;
+            bool flg=1;
+            flg &= ((i>l&&t[i-1]=='1')||(i>l+1&&s[i-2]=='0'));
+            flg &= ((i<r&&t[i+1]=='1')||(i<r-1&&s[i+2]=='0'));
+            return flg;
+        };
+        for(auto [l, r] : q)
+        {
+            int ans = 0;
+            --l;--r;
+            if(r-l+1<=5) for(int i=l;i<=r;++i) ans+=cal(l, r, i);
+            else
+            {
+                ans=ok[r-2]-ok[l+1];
+                ans+=cal(l,r,l)+cal(l,r,l+1)+cal(l,r,r-1)+cal(l,r,r);
+            }
+            cout << ans << "\n";
+        }
 	}
     return 0;
 }

@@ -41,7 +41,17 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n;
+        cin >> n;
+        long long x = 2, ans = 0;
+        for(int i = 2; i <= n; ++i)
+        {
+            int _ = (n/i);
+            long long test = 1ll * _ * (_ + 1) / 2;
+            if(1ll * test * i > ans) x = i, ans = 1ll * test * i ;
+            // dbg(i, test*i);
+        }
+        cout << x << "\n";
 	}
     return 0;
 }

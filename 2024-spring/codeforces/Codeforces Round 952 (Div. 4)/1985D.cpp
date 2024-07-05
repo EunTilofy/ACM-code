@@ -41,7 +41,28 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n, m; cin >> n >> m;
+        vector<string> a(n);
+        int x=-1, y=-1;
+        for(int i = 0; i < n; ++i)
+        {
+            cin >> a[i];
+            int cnt = 0, id = -1;
+            for(auto x : a[i]) cnt += x == '#';
+            for(int j = 0; j < m; ++j) if(a[i][j] == '#') id = j;
+            if(y==-1 && cnt == 1) y = id;
+        }
+        for(int j = 0; j < m; ++j)
+        {
+            int id = -1, cnt = 0;
+            for(int i = 0; i < n; ++i) cnt += a[i][j] == '#', (id == -1 && a[i][j] == '#') ? id = i : 0;
+            if(cnt == 1 && x == -1)
+            {
+                x = id;
+                break;
+            }
+        }
+        cout << x + 1 << " " << y + 1 << "\n";
 	}
     return 0;
 }

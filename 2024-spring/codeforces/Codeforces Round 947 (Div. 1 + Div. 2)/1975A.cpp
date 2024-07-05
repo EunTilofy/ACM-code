@@ -31,8 +31,12 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
+#define cout std::cout
+#define cin std::cin
+#define cerr std::cerr
 
 const int N = 4e5 + 5;
+// int a[N], b[N], c[N];
 
 int main()
 {
@@ -41,7 +45,21 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n; 
+        vector<int> a(n); cin >> a;
+        bool flg = 0;
+        string s[2] = {"No", "Yes"};
+        for(int i = 0; i < n; ++i)
+        {
+            int last = 0, ff = 1;
+            for(int j = 0; j < n; ++j) 
+            {
+                ff &= a[(j+i)%n] >= last;
+                last = a[(j+i)%n];
+            }
+            flg |= ff;
+        }
+        cout << s[flg] << "\n";
 	}
     return 0;
 }

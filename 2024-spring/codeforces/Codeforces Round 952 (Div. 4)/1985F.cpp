@@ -41,7 +41,20 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int h, n; cin >> h >> n;
+        vector<int> a(n), c(n); cin >> a >> c;
+        set<pair<long long, int>> t;
+        long long now = 1, at = 0;
+        for(auto x : a) at += x;
+        for(int i = 0; i < n; ++i) t.insert({c[i]+1, i});
+        while(at < h)
+        {
+            auto [x, id] = *t.begin();
+            now = x; at += a[id];
+            t.erase({x, id});
+            t.insert({x+c[id], id});
+        }
+        cout << now << "\n";
 	}
     return 0;
 }

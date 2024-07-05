@@ -41,7 +41,16 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n; vector<ll> a(n); cin >> a;
+        long long sm = 0, ans = 0;
+        set<ll> S;
+        for(int i = 1; i <= n; ++i)
+        {
+            S.insert(a[i-1]);
+            sm += a[i-1];
+            if(S.count(sm / 2) && sm % 2 == 0) ++ans;
+        }
+        cout << ans << "\n";
 	}
     return 0;
 }

@@ -41,7 +41,32 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n;
+        cin >> n;
+        vector<vector<int>> G(n+1);
+        vector<int> deg(n+1);
+        for(int i=1;i<n;++i)
+        {
+            int x, y;
+            cin >> x >> y;
+            G[x].push_back(y);
+            G[y].push_back(x);
+        }
+        int ans=0;
+        vector<bool> f(n+1);
+        function<void(int,int)> dfs = [&](int x, int F)
+        {
+            bool flg = 1;
+            for(auto y : G[x]) if(y != F)
+            {
+                dfs(y, x); flg &= f[y];
+            }
+            f[x] = (!flg) || (G[x].size()==1);
+            if(f[x]) ++ans;
+            dbg(x, f[x]);
+        };
+        dfs(1,0);
+        cout << ans << "\n";
 	}
     return 0;
 }

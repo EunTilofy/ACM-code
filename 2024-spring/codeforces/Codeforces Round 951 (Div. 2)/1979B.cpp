@@ -41,7 +41,12 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int x, y;
+        cin >> x >> y;
+        int L = (x^y);
+        int ans = 1;
+        while(L % 2 == 0) L>>=1, ans<<=1;
+        cout << ans << "\n";
 	}
     return 0;
 }

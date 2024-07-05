@@ -31,17 +31,39 @@ inline int Dec(int x, int y){return (x+MOD-y)%MOD;}
 #define REGISTER_OUTPUT_NAME(Type, ...) ;
 #define REGISTER_OUTPUT(Type, ...) ;
 #endif
-
+#define int long long
 const int N = 4e5 + 5;
 
-int main()
+signed main()
 {
 	ios::sync_with_stdio(0); cin.tie(0);
 	cout<<fixed<<setprecision(15);
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n;
+        vector<long long> a(n); cin >> a;
+        vector<long long> b(n+1), c(n+1); b = a;
+        long long sm = 0;
+        b[n]=0;
+        for(int i=n-1;i>=0;--i)b[i]=b[i+1]+a[i];
+        c[0]=0;
+        for(int i=0;i<n;++i) c[i+1]=c[i]+a[i];
+        if(*min_element(all(c))>=0) cout << fpow(2,n) << "\n";
+        else
+        {
+            long long anss=0, now=0;
+            long long x=*min_element(all(c));
+            for(int i=1;i<=n;++i) 
+            {
+                if(x==c[i])
+                {
+                    anss = Add(anss, fpow(2, n-i+now));
+                }
+                now+=c[i]>=0;
+            }
+            cout << anss << "\n";
+        }
 	}
     return 0;
 }

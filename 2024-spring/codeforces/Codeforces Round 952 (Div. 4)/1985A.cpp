@@ -41,7 +41,9 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        string s,t;
+        cin >> s >> t;
+        cout << t[0] << s.substr(1) << " " << s[0] << t.substr(1) << "\n";
 	}
     return 0;
 }

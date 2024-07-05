@@ -41,7 +41,14 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n, a, b; cin >> n >> a >> b;
+        if(b <= a)cout << 1ll * a * n << "\n";
+        else 
+        {
+            int k = max(0, min(n, b-a));
+            long long ans = 1ll * a * (n - k) + 1ll * (b + (b-k+1)) * k / 2; 
+            cout << ans << "\n";
+        }
 	}
     return 0;
 }

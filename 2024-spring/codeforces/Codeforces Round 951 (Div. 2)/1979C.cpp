@@ -41,7 +41,13 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n;
+        vector<int> a(n); cin >> a;
+        long long x = 1, xx;
+        for(int y : a) x = lcm(x, y); xx = x;
+        for(int y : a) xx -= x / y;
+        if(xx <= 0) { cout << "-1\n"; continue; }
+        for(int y : a) cout << x / y << " "; cout << "\n";
 	}
     return 0;
 }

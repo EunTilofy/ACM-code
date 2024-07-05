@@ -41,7 +41,11 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n; vector<int> a(n); cin >> a;
+        if(*max_element(all(a)) == a[n-1]) 
+        {
+            cout << a[n-1] + *max_element(all(a) - 1) << "\n";
+        } else cout << *max_element(all(a)) + a[n-1] << "\n";
 	}
     return 0;
 }

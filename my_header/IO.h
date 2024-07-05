@@ -51,6 +51,8 @@ std::ostream& operator << (std::ostream& out, const std::tuple<T1, T2, T3> &o);
 template<typename T>
 std::ostream& operator << (std::ostream& out, const std::vector<T> &o);
 template<typename T>
+std::ostream& operator << (std::ostream& out, const std::valarray<T> &o);
+template<typename T>
 std::ostream& operator << (std::ostream& out, const std::set<T> &o);
 template<typename T>
 std::ostream& operator << (std::ostream& out, const std::list<T> &o);
@@ -75,6 +77,18 @@ std::ostream& operator << (std::ostream& out, const std::tuple<T1, T2, T3> &o) {
 }
 template<typename T>
 std::ostream& operator << (std::ostream& out, const std::vector<T> &o) {
+  out << __io__LR__[0];
+  bool Flag = 0;
+  for(auto & item : o) {
+    if(Flag) out << ", ";
+    else Flag = 1;
+    OUTPUT_MEMBER(out, item);
+  }
+  out << __io__LR__[1];
+  return out;
+}
+template<typename T>
+std::ostream& operator << (std::ostream& out, const std::valarray<T> &o) {
   out << __io__LR__[0];
   bool Flag = 0;
   for(auto & item : o) {

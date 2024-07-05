@@ -41,7 +41,20 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        string s;
+        cin >> s;
+        reverse(all(s));
+        bool flg = 1;
+        flg &= s.back() == '1';
+        int d=0;
+        for(auto x:s)
+        {
+            int y=x-'0';
+            y-=d;
+            if(y==9||y==-1) {flg=0; break;}
+            d=1;
+        }
+        cout << (flg?"YES":"NO") << "\n";
 	}
     return 0;
 }

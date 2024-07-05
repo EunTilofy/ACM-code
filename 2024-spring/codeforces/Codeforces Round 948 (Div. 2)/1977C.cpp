@@ -41,7 +41,48 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        cin >> a;
+        sort(all(a));
+        set<int> s;
+        for(auto x : a) s.insert(x);
 
+        bool flg = 0;
+
+        for(int i = 0; i < n; ++i)
+        for(int j = i+1; j<n; ++j)
+            if(s.count(lcm(a[i], a[j])) == 0) {flg = 1; break;}
+        
+        if(!flg) {cout << "0\n";continue;}
+
+        for(int i = flg =  0; i < n-1; ++i)
+        {
+            if(a[n-1] % a[i] != 0) {flg = 1; break;}
+        }
+        if(flg) {cout << n << "\n"; continue;}
+
+        int ans = 0;
+        function<int(int)> chk = [&](int x)
+        {
+            if(s.count(x)) return 0;
+            int nm = 1, _ = 0;
+            for(int i = 0; i < n-1; ++i)
+            {
+                if(x % a[i] == 0) nm = lcm(nm, a[i]), ++_;
+            }
+            if(nm == x) {return _;}
+            return 0;
+        };
+        
+        for(int i = 1; i * i <= a[n-1]; ++i) if(a[n-1] % i == 0)
+        {
+            ans = max(ans, chk(a[n-1]/i));
+            ans = max(ans, chk(i));
+        }
+        cout << ans << "\n";
+        // dbg3(-----);
 	}
     return 0;
 }

@@ -41,7 +41,32 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        long long n, k; cin >> n >> k;
+        if(k & 1) { cout << "No\n"; continue; }
+        vector<int> a(n+1);
+        for(int i = 1; i <= n; ++i) a[i] = i;
+        long long now = 0;
+        long long mx = 1ll * ((n/2)*2) * ((n+1)/2);
+        // if(k > mx) { cout << "No\n"; continue;}
+        for(int i = 1; now < k && i*2 <= n; ++i)
+        {
+            if(k - now >= 2 * (n-i+1-i)) 
+            {
+                now += 2 * (n-i+1-i);
+                swap(a[i], a[n-i+1]);
+            }
+            else 
+            {
+                int num = (k - now) / 2;
+                swap(a[i], a[i+num]);
+                now += 2 * num;
+            }
+            // dbg(i, now, k);
+        }
+        if(now < k) cout << "No\n";
+        else {
+        cout << "Yes\n";
+        for(int i = 1; i <= n; ++i) cout << a[i] << " "; cout << "\n";}
 	}
     return 0;
 }

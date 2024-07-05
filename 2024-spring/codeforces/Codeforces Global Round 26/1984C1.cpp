@@ -41,7 +41,19 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n;
+        vector<long long> a(n), b(n+1); cin >> a; b = a;
+        long long sm = 0;
+        b[n]=0;
+        for(int i=n-1;i>=0;--i)b[i]=b[i+1]+a[i];
+        long long ans=b[0];
+        for(int i=0;i<n;++i)
+        {
+            sm+=a[i];
+            ans=max(ans, abs(sm)+b[i+1]);
+            // dbg(sm, b[i+1]);
+        }
+        cout << ans<<'\n';
 	}
     return 0;
 }

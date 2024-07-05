@@ -41,7 +41,24 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        long long k;
+        vector<int> a(3);
+        cin >> a >> k;
+        a[0]++; a[1]++; a[2]++;
+        sort(all(a));
+        long long ans = 0;
+        for(int i = 1; i < a[0]; ++i) if(k % i == 0)
+        {
+            int x = a[0]-i;
+            for(int j = 1; j < a[1]; ++j) if((k/i) % j == 0 && a[2] > (k/i/j))
+            {
+                int y = a[1]-j;
+                int z = a[2]-(k/i/j);
+                if(x > 0 && y > 0 && z > 0 && 1ll*x*y*z > ans)
+                    ans = 1ll * x * y * z;
+            }
+        }
+        cout << ans << "\n";
 	}
     return 0;
 }

@@ -41,7 +41,10 @@ int main()
 	int T; cin>>T;
 	while (T--)
 	{
-
+        int n; cin >> n; vector<int> a(n); cin >> a;
+        int x = max(a[0], a[1]);
+        for(int i = 1; i < n-1; ++i) x = min(x, max(a[i], a[i+1]));
+        cout << x-1 << "\n";
 	}
     return 0;
 }
